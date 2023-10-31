@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import MyCalendar from './MyCalendar';
 import axios from 'axios';
 
+
 const App = () => {
   const [events, setEvents] = useState([]);
 
@@ -9,7 +10,7 @@ const App = () => {
     // Fetch events from your API
     const fetchEvents = async () => {
       try {
-        const response = await axios.get('https://a1d13nt7dj.execute-api.ca-central-1.amazonaws.com/prod/events');
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}`);
         const formattedEvents = response.data.map(event => ({
           ...event,
           start: new Date(event.startDateTime),

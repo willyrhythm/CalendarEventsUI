@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+const apiUrl = process.env.API_URL;
 
 // need to add input fields before this page is complete
 const CalendarEventForm = ({ onEventCreated }) => {
@@ -17,7 +18,7 @@ const CalendarEventForm = ({ onEventCreated }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('https://a1d13nt7dj.execute-api.ca-central-1.amazonaws.com/prod/events', eventData);
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}`, eventData);
             console.log(response.data);
             onEventCreated();
         } catch (error) {
